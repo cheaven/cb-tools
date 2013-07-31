@@ -98,7 +98,7 @@ int outport(int sel,int dispfh,__disp_output_type_t type,__disp_tv_mode_t mode)
 }
 
 
-void print_hdmi_mode()
+void print_tv_mode()
 {
 	printf("TV Mode:\n" \
 		"\t0 - 480p\n"			\
@@ -115,17 +115,56 @@ void print_hdmi_mode()
 
 }
 
+#if 0
+typedef enum {
+	DISP_VGA_H1680_V1050 = 0,
+	DISP_VGA_H1440_V900 = 1,
+	DISP_VGA_H1360_V768 = 2,
+	DISP_VGA_H1280_V1024 = 3,
+	DISP_VGA_H1024_V768 = 4,
+	DISP_VGA_H800_V600 = 5,
+	DISP_VGA_H640_V480 = 6,
+	DISP_VGA_H1440_V900_RB = 7, /* not support yet */
+	DISP_VGA_H1680_V1050_RB = 8, /* not support yet */
+	DISP_VGA_H1920_V1080_RB = 9,
+	DISP_VGA_H1920_V1080 = 0xa,
+	DISP_VGA_H1280_V720 = 0xb,
+	DISP_VGA_MODE_NUM = 0xc,
+} __disp_vga_mode_t;
+#endif
+
+void print_vga_mode()
+{
+	printf("VGA Mode:\n" \
+	       "\t0 - 1680x1050\n"		\
+	       "\t1 - 1440x900\n" \
+	       "\t2 - 1360x768\n" \
+	       "\t3 - 1280x1024\n" \
+	       "\t4 - 1024x768\n" \
+	       "\t5 - 800x600\n" \
+	       "\t6 - 640x480\n" \
+	       "\t7 - 1440x900-RB\n" \
+	       "\t8 - 1680x1050-RB\n" \
+	       "\t9 - 1920x1080-RB\n" \
+	       "\t10- 1920x1080\n" \
+	       "\t11- 1280x720\n" \
+	       "\t12- Mode Num\n\n"
+	       );
+}
+
+
 void print_help()
 {
 	printf("CB-DISPLAY-TOOL\n" \
 	       "NAME\n" \
-	       "\tcb-display-tool - simple display for cubieboard to control output mode\n"  \
+	       "\tcb-display-tool - simple tool to control cubieboard's display output mode\n"  \
 	       "OPTIONS\n" \
 	       "\t-o output  Output type, 4(HDMI), 8(VGA)\n" \
 	       "\t-m mode    Mode type\n" \
 	       "\n");
 
-	print_hdmi_mode();
+	print_tv_mode();
+	print_vga_mode();
 }
 
 int main(int argc, char *argv[])
